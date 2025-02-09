@@ -6,7 +6,9 @@ OUTPUT_FILENAME = "Kalkulator-Bea-Cukai-by-maszaen-v2.0"
 
 OUTPUT_DIR = "build"
 
-command = f"python -m nuitka --standalone --onefile --enable-plugin=pyside6 --output-dir={OUTPUT_DIR} --output-filename={OUTPUT_FILENAME} --disable-console {MAIN_SCRIPT}"
+DEBUG = "disable"
+
+command = f"python -m nuitka --standalone --onefile --enable-plugin=pyside6 --output-dir={OUTPUT_DIR} --output-filename={OUTPUT_FILENAME} --windows-console-mode={DEBUG} {MAIN_SCRIPT}"
 
 print(f"Building {OUTPUT_FILENAME}...")
 os.system(command)
