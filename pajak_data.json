@@ -1,0 +1,182 @@
+{
+    "XR 64GB": {
+        "harga_idr": 3500000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "XR 128GB": {
+        "harga_idr": 3900000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "11 64GB": {
+        "harga_idr": 4400000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "11 256GB": {
+        "harga_idr": 5100000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "11 PRO 64GB": {
+        "harga_idr": 5400000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "11 PRO 512GB": {
+        "harga_idr": 6500000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "11 PROMAX 64GB": {
+        "harga_idr": 6100000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "11 PROMAX 512GB": {
+        "harga_idr": 6800000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "12 64GB": {
+        "harga_idr": 5150000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "12 256GB": {
+        "harga_idr": 6350000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "12 PRO 128GB": {
+        "harga_idr": 6800000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "12 PRO 512GB": {
+        "harga_idr": 7600000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "12 PROMAX 128GB": {
+        "harga_idr": 7800000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "12 PROMAX 512GB": {
+        "harga_idr": 9200000,
+        "selisih_pembebasan": 64.90237013385729,
+        "bea_masuk": 6.4902370133857294,
+        "ppn_idr": 127896,
+        "pph_idr": 116269,
+        "total_usd": 21.48268451430676,
+        "total_idr": 349866
+    },
+    "13 128GB": {
+        "harga_idr": 7200000,
+        "selisih_pembebasan": 0,
+        "bea_masuk": 0.0,
+        "ppn_idr": 0,
+        "pph_idr": 0,
+        "total_usd": 0.0,
+        "total_idr": 0
+    },
+    "13 512GB": {
+        "harga_idr": 9700000,
+        "selisih_pembebasan": 95.60358590200167,
+        "bea_masuk": 9.560358590200167,
+        "ppn_idr": 188396,
+        "pph_idr": 171269,
+        "total_usd": 31.644786933562557,
+        "total_idr": 515366
+    },
+    "13 PRO 128GB": {
+        "harga_idr": 9800000,
+        "selisih_pembebasan": 101.74382905563061,
+        "bea_masuk": 10.174382905563062,
+        "ppn_idr": 200497,
+        "pph_idr": 182270,
+        "total_usd": 33.67720741741373,
+        "total_idr": 548467
+    },
+    "13 PRO 512GB": {
+        "harga_idr": 10300000,
+        "selisih_pembebasan": 132.445044823775,
+        "bea_masuk": 13.2445044823775,
+        "ppn_idr": 260996,
+        "pph_idr": 237269,
+        "total_usd": 43.83930983666952,
+        "total_idr": 713966
+    },
+    "13 PROMAX 128GB": {
+        "harga_idr": 10300000,
+        "selisih_pembebasan": 132.445044823775,
+        "bea_masuk": 13.2445044823775,
+        "ppn_idr": 260996,
+        "pph_idr": 237269,
+        "total_usd": 43.83930983666952,
+        "total_idr": 713966
+    },
+    "13 PROMAX 1TB": {
+        "harga_idr": 11500000,
+        "selisih_pembebasan": 206.12796266732164,
+        "bea_masuk": 20.612796266732165,
+        "ppn_idr": 406197,
+        "pph_idr": 369270,
+        "total_usd": 68.22835564288347,
+        "total_idr": 1111167
+    }
+}
