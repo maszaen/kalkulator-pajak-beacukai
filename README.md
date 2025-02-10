@@ -1,5 +1,6 @@
 # Kalkulator Bea Cukai
-![Screenshot 2025-02-09 112411](https://github.com/user-attachments/assets/996a0831-c79c-4621-b5d7-173e923e1c73)
+![Screenshot 2025-02-10 145938](https://github.com/user-attachments/assets/e2b7ac60-bd83-484b-810a-4acac7658156)
+
 
 ## Fitur
 - Hitung pajak bea cukai
