@@ -16,7 +16,6 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QDialog,
     QHeaderView,
-    QFrame,
     QDialogButtonBox,
     QFormLayout,
     QCheckBox,
@@ -117,7 +116,16 @@ class BeaCukaiApp(QMainWindow):
         self.setWindowTitle("Kalkulator Pajak Bea Cukai")
         self.setMinimumSize(1400, 900)
 
-        self.script_dir = os.path.dirname(os.path.abspath(__file__))
+        appdata_roaming = os.environ.get("APPDATA")
+        project_folder = "kalkulator-bea-cukai"
+
+        project_path = os.path.join(appdata_roaming, project_folder)
+
+        if not os.path.exists(project_path):
+            os.makedirs(project_path)
+
+        self.script_dir = project_path
+
         self.config_path = os.path.join(self.script_dir, "config.json")
 
         self.file_model = QFileSystemModel()
@@ -150,12 +158,10 @@ class BeaCukaiApp(QMainWindow):
             )
         else:
             if len(json_files) == 0:
-                self.current_data_file = os.path.join(
-                    self.script_dir, "pajak_data.json"
-                )
+                self.current_data_file = os.path.join(self.script_dir, "database.json")
                 with open(self.current_data_file, "w") as f:
                     json.dump({}, f)
-                self.LAST_OPENED_FILE = "pajak_data.json"
+                self.LAST_OPENED_FILE = "database.json"
                 self.save_config()
             elif len(json_files) == 1:
                 self.current_data_file = os.path.join(self.script_dir, json_files[0])
@@ -172,11 +178,36 @@ class BeaCukaiApp(QMainWindow):
 
     def setup_menu(self):
         menu_bar = self.menuBar()
+        menu_bar.setStyleSheet(
+            """
+            QMenuBar {
+              background-color: #f0f0f0; 
+              border-bottom: 1px solid #C9CCD3; 
+              color: black; 
+            }
+            QMenuBar::item {
+              background: transparent;
+              padding: 5px 5px;
+            }
+            QMenuBar::item:selected {
+              background: #d0d0d0;
+            }
+            """
+        )
+        file_menu = menu_bar.addMenu("File")
         config_menu = menu_bar.addMenu("Konfigurasi")
+
+        file_action = QAction("Buat Database Baru", self)
+        file_action.triggered.connect(self.tambah_database)
+
+        folder_action = QAction("Buat Folder Baru", self)
+        folder_action.triggered.connect(self.tambah_folder)
 
         config_action = QAction("Pengaturan", self)
         config_action.triggered.connect(self.show_config_dialog)
         config_menu.addAction(config_action)
+        file_menu.addAction(file_action)
+        file_menu.addAction(folder_action)
 
     def show_config_dialog(self):
         dialog = ConfigDialog(self)
@@ -214,7 +245,7 @@ class BeaCukaiApp(QMainWindow):
             "KURS_PAJAK": 16275,
             "PEMBEBASAN": 500,
             "NPWP": True,
-            "LAST_OPENED_FILE": "pajak_data.json",
+            "LAST_OPENED_FILE": "database.json",
         }
 
         try:
@@ -272,22 +303,31 @@ class BeaCukaiApp(QMainWindow):
         nav_container.setMaximumWidth(200)
         nav_container.setMaximumHeight(280)
         nav_layout = QVBoxLayout(nav_container)
-        nav_layout.setContentsMargins(20, 20, 20, 20)
+        nav_layout.setContentsMargins(1, 1, 1, 1)
         nav_layout.setSpacing(5)
 
         # Navigation content
+        label_db_layout = QVBoxLayout()
         self.active_db_label = QLabel()
         self.active_db_label.setFont(QFont("Arial", 12, QFont.Weight.Bold))
-        self.active_db_label.setContentsMargins(0, 0, 0, 10)
+        self.active_db_label.setContentsMargins(15, 0, 15, 15)
         self.active_db_label.setStyleSheet("border: none;")
         self.active_db_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.update_active_db_label()
-        nav_layout.addWidget(self.active_db_label)
+        self.label_db = QLabel()
+        self.label_db.setText("Active Database:")
+        self.label_db.setFont(QFont("Arial", 8, QFont.Weight.Bold))
+        self.label_db.setContentsMargins(15, 15, 15, 0)
+        self.label_db.setStyleSheet("border: none;")
+        self.label_db.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        label_db_layout.addWidget(self.label_db)
+        label_db_layout.addWidget(self.active_db_label)
+        nav_layout.addLayout(label_db_layout)
 
         btn_container = QWidget()
         btn_layout = QHBoxLayout(btn_container)
         btn_container.setStyleSheet("border: none;")
-        btn_layout.setContentsMargins(0, 0, 0, 0)
+        btn_layout.setContentsMargins(15, 0, 15, 0)
 
         self.btn_add_db = QPushButton("+ Data")
         self.btn_add_folder = QPushButton("+ Folder")
@@ -343,6 +383,7 @@ class BeaCukaiApp(QMainWindow):
         self.tree_view.hideColumn(2)
         self.tree_view.hideColumn(3)
         self.tree_view.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.tree_view.setStyleSheet("border: none; padding-top: 10px; margin: 0px;")
         self.tree_view.customContextMenuRequested.connect(self.show_context_menu)
         self.tree_view.doubleClicked.connect(self.on_tree_double_click)
 
@@ -552,16 +593,16 @@ class BeaCukaiApp(QMainWindow):
         )
         self.table.setStyleSheet(
             """
-            QTableWidget { 
+            QTableWidget::horizontalHeader { 
               gridline-color: #d0d0d0;
               background: white; 
-              border: 1px solid #d0d0d0; 
+              border: none; 
               border-radius: 5px; 
             }
             QHeaderView::section { 
               background: #f0f0f0; 
               padding: 0px; 
-              border: 1px solid #d0d0d0; 
+               
               font-size: 9pt;
               padding-left: 12px;
               padding-right: 12px;
@@ -589,7 +630,6 @@ class BeaCukaiApp(QMainWindow):
         self.table.setSelectionBehavior(QTableWidget.SelectRows)
         self.table.setSelectionMode(QTableWidget.SingleSelection)
 
-        # Info Layout at bottom of table container
         self.info_layout = QHBoxLayout()
         info_pairs = [
             ("Kurs Pajak (USD): ", f"Rp {self.KURS_PAJAK:,}"),
@@ -666,7 +706,9 @@ class BeaCukaiApp(QMainWindow):
 
     def tambah_folder(self):
         parent_dir = self.script_dir
-        name, ok = QInputDialog.getText(self, "Buat Folder", "Nama folder:")
+        name, ok = QInputDialog.getText(
+            self, "Buat Folder", "Masukkan Nama folder:                 "
+        )
         if ok and name:
             folder_path = os.path.join(parent_dir, name)
             if os.path.exists(folder_path):
@@ -679,6 +721,7 @@ class BeaCukaiApp(QMainWindow):
                 QMessageBox.critical(self, "Error", f"Gagal membuat: {str(e)}")
 
     def copy_file(self, src_path):
+        print("copy_file 1")
         dest_dir = QFileDialog.getExistingDirectory(
             self, "Pilih Folder Tujuan", self.script_dir
         )
@@ -766,26 +809,6 @@ class BeaCukaiApp(QMainWindow):
             menu.exec(self.tree_view.viewport().mapToGlobal(pos))
         except Exception as e:
             QMessageBox.critical(self, "Error", f"Gagal menampilkan menu: {str(e)}")
-
-    def copy_file(self, src_path):
-        dest_dir = QFileDialog.getExistingDirectory(
-            self, "Pilih Folder Tujuan", self.script_dir
-        )
-        if not dest_dir:
-            return
-
-        file_name = os.path.basename(src_path)
-        dest_path = os.path.join(dest_dir, file_name)
-
-        if os.path.exists(dest_path):
-            QMessageBox.warning(self, "Error", "File sudah ada di folder tujuan.")
-            return
-
-        try:
-            shutil.copy2(src_path, dest_path)
-            self.file_model.setRootPath(self.file_model.rootPath())
-        except Exception as e:
-            QMessageBox.critical(self, "Error", f"Gagal menyalin file: {str(e)}")
 
     def move_file(self, src_path):
         dest_dir = QFileDialog.getExistingDirectory(
@@ -935,8 +958,8 @@ class BeaCukaiApp(QMainWindow):
             self.save_config()
             self.load_data()
         else:
-            self.current_data_file = os.path.join(self.script_dir, "pajak_data.json")
-            self.LAST_OPENED_FILE = "pajak_data.json"
+            self.current_data_file = os.path.join(self.script_dir, "database.json")
+            self.LAST_OPENED_FILE = "database.json"
             with open(self.current_data_file, "w") as f:
                 json.dump({}, f)
             self.save_config()
