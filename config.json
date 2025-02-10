@@ -1,5 +1,6 @@
 {
-    "KURS_PAJAK": 16275.0,
-    "PEMBEBASAN": 500.0,
-    "NPWP": true
+    "KURS_PAJAK": 16275,
+    "PEMBEBASAN": 500,
+    "NPWP": true,
+    "LAST_OPENED_FILE": "pajak_data.json"
 }

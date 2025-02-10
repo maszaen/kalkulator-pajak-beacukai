@@ -2,7 +2,7 @@ import os
 
 MAIN_SCRIPT = "main.py"
 
-OUTPUT_FILENAME = "Kalkulator-Bea-Cukai-by-maszaen-v2.0"
+OUTPUT_FILENAME = "Kalkulator-Bea-Cukai-v3.1.6"
 
 OUTPUT_DIR = "build"
 

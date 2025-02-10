@@ -172,11 +172,11 @@
     },
     "13 PROMAX 1TB": {
         "harga_idr": 11500000,
-        "selisih_pembebasan": 206.12796266732164,
-        "bea_masuk": 20.612796266732165,
-        "ppn_idr": 406197,
-        "pph_idr": 369270,
-        "total_usd": 68.22835564288347,
-        "total_idr": 1111167
+        "selisih_pembebasan": 206.605222734255,
+        "bea_masuk": 20.6605222734255,
+        "ppn_idr": 406862,
+        "pph_idr": 369875,
+        "total_usd": 68.38632872503841,
+        "total_idr": 1112987
     }
 }
